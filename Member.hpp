@@ -8,19 +8,22 @@ using namespace std;
 class Member : public Person
 {
     private:
-    Person person;
+    // Person person;
     vector<Post> posts;
     vector<pair<string,Message>> messages;
     vector<Member> friends;
-    bool areSame(Person p1, Person p2)
-    {
-        if((p1.getName() == p2.getName()) && (p1.getAge() == p2.getAge()) && (p1.getCity() == p2.getCity()) && (p1.getOccupation() == p2.getOccupation()))
-            return true;
-        return false;
-    }
+   
     // vector<Person> following; //can be used for instagram/twitter
     public:
-    Member(const string &name, const string &city, const string &occ, const int &age):Person(name, city,occ, age){}
+    Member()=default;
+    Member(const string &name, const string &city, const string &occ, const int &age){
+         this->name = name;
+         this->currentCity = city;
+         this->occupation = occ;
+         this->age = age;
+    }
+       
+    // }
     // Person getPerson(){return person;} 
      
 
@@ -77,5 +80,10 @@ class Member : public Person
         }
         return false;
     }
-    
+     bool areSame(Person p1, Person p2)
+    {
+        if((p1.getName() == p2.getName()) && (p1.getAge() == p2.getAge()) && (p1.getCity() == p2.getCity()) && (p1.getOccupation() == p2.getOccupation()))
+            return true;
+        return false;
+    }
 };
